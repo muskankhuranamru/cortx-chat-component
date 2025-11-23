@@ -14,9 +14,9 @@ export class App implements OnInit, OnDestroy {
   private incomingMessageInterval?: any;
   
   currentUser: ChatUser = {
-    id: 'user-dixit',
-    name: 'Dixit',
-    avatar: 'https://i.pravatar.cc/150?u=dixit'
+    id: 'user-muskan',
+    name: 'Muskan',
+    avatar: 'https://i.pravatar.cc/150?u=muskan'
   };
 
   chatConfig: ChatConfig = {
