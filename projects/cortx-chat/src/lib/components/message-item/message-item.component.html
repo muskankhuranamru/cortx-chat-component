@@ -1,0 +1,33 @@
+<div class="message-wrapper" [class.own-message]="message.isOwn" [class.grouped]="isGrouped">
+  <div class="message-container">
+    <!-- Avatar (only show if not grouped or it's the first message) -->
+    <div class="avatar-container" *ngIf="showAvatar && !isGrouped">
+      <img 
+        [src]="message.avatar || 'https://i.pravatar.cc/150?u=' + message.userId" 
+        [alt]="message.userName"
+        class="avatar"
+      />
+    </div>
+    <div class="avatar-placeholder" *ngIf="isGrouped"></div>
+
+    <!-- Message Content -->
+    <div class="message-content">
+      <!-- Name and Timestamp (only show if not grouped) -->
+      <div class="message-header" *ngIf="showName && !isGrouped">
+        <span class="user-name">{{ message.userName }}</span>
+        <span class="timestamp">{{ formatTime(message.timestamp) }}</span>
+      </div>
+
+      <!-- Message Bubble -->
+      <div class="message-bubble" [class.own-bubble]="message.isOwn">
+        <p class="message-text">{{ message.content }}</p>
+      </div>
+
+      <!-- Timestamp for grouped messages -->
+      <div class="grouped-timestamp" *ngIf="isGrouped">
+        <span class="timestamp-small">{{ formatTime(message.timestamp) }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,25 @@
+<div class="chat-container" [class.dark]="theme === 'dark'">
+  <div class="chat-header">
+    <h2 class="chat-title">Chat Messages</h2>
+    <div class="chat-info">
+      <span class="message-count">{{ messages.length.toLocaleString() }} messages</span>
+    </div>
+  </div>
+
+  <div class="chat-body">
+    <lib-message-list
+      [messages]="messages"
+      [itemHeight]="config.itemHeight || 80"
+      [loading]="loading"
+      (loadMore)="onLoadMore()"
+      (scrollEvent)="onScroll($event)"
+    ></lib-message-list>
+  </div>
+
+  <div class="chat-footer">
+    <lib-message-input
+      (messageSend)="onMessageSend($event)"
+    ></lib-message-input>
+  </div>
+</div>
+

@@ -1,8 +1,12 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "cortx-chat": [
+        "./dist/cortx-chat"
+      ]
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -21,5 +25,16 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "files": []
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/demo-app/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/cortx-chat/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/cortx-chat/tsconfig.spec.json"
+    }
+  ]
 }

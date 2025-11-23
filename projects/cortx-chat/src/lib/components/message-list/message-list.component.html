@@ -1,0 +1,40 @@
+<div class="message-list-container">
+  <!-- Loading indicator at top -->
+  <div class="loading-indicator" *ngIf="loading">
+    <div class="spinner"></div>
+    <span class="loading-text">Loading previous messages...</span>
+  </div>
+
+  <!-- Virtual scroll viewport -->
+  <cdk-virtual-scroll-viewport
+    [itemSize]="itemHeight"
+    [minBufferPx]="1000"
+    [maxBufferPx]="2000"
+    class="viewport"
+  >
+    <div
+      *cdkVirtualFor="let message of messages; trackBy: trackByMessageId"
+      class="message-row"
+    >
+      <lib-message-item
+        [message]="message"
+        [showAvatar]="shouldShowAvatar(message, messages.indexOf(message))"
+        [showName]="shouldShowName(message, messages.indexOf(message))"
+        [isGrouped]="isGrouped(message, messages.indexOf(message))"
+      ></lib-message-item>
+    </div>
+  </cdk-virtual-scroll-viewport>
+
+  <!-- Scroll to bottom button -->
+  <button
+    *ngIf="!isAtBottom && messages.length > 0"
+    class="scroll-to-bottom-btn"
+    (click)="scrollToBottom()"
+    aria-label="Scroll to bottom"
+  >
+    <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg>
+  </button>
+</div>
+

@@ -1,0 +1,25 @@
+{
+  "name": "@cortx/chat-ui",
+  "version": "1.0.0",
+  "description": "High-performance Angular chat component with virtual scroll for handling millions of messages",
+  "author": "Cortx Team",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "chat",
+    "virtual-scroll",
+    "messages",
+    "performance"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0",
+    "@angular/cdk": "^21.0.0",
+    "@angular/forms": "^21.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "@faker-js/faker": "^9.3.0"
+  },
+  "sideEffects": false
+}
