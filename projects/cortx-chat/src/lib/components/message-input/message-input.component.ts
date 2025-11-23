@@ -14,6 +14,28 @@ export class MessageInputComponent {
   @Output() messageSend = new EventEmitter<string>();
   
   messageText: string = '';
+  showEmojiPicker: boolean = false;
+
+  // Lightweight emoji list - most popular emojis
+  emojis: string[] = [
+    '😀', '😃', '😄', '😁', '😆', '😅', '🤣', '😂', '🙂', '🙃',
+    '😉', '😊', '😇', '🥰', '😍', '🤩', '😘', '😗', '😚', '😙',
+    '😋', '😛', '😜', '🤪', '😝', '🤗', '🤭', '🤫', '🤔', '🤐',
+    '🤨', '😐', '😑', '😶', '😏', '😒', '🙄', '😬', '🤥', '😌',
+    '😔', '😪', '🤤', '😴', '😷', '🤒', '🤕', '🤢', '🤮', '🤧',
+    '🥵', '🥶', '😶‍🌫️', '😵', '😵‍💫', '🤯', '🤠', '🥳', '😎', '🤓',
+    '🧐', '😕', '😟', '🙁', '☹️', '😮', '😯', '😲', '😳', '🥺',
+    '😦', '😧', '😨', '😰', '😥', '😢', '😭', '😱', '😖', '😣',
+    '😞', '😓', '😩', '😫', '🥱', '😤', '😡', '😠', '🤬', '👍',
+    '👎', '👊', '✊', '🤛', '🤜', '🤞', '✌️', '🤟', '🤘', '👌',
+    '🤏', '👈', '👉', '👆', '👇', '☝️', '👏', '🙌', '👐', '🤲',
+    '🤝', '🙏', '✍️', '💪', '❤️', '🧡', '💛', '💚', '💙', '💜',
+    '🖤', '🤍', '🤎', '💔', '❤️‍🔥', '💕', '💞', '💓', '💗', '💖',
+    '💘', '💝', '💟', '☮️', '✝️', '☪️', '🕉️', '☸️', '✡️', '🔯',
+    '🕎', '☯️', '☦️', '⛎', '♈', '♉', '♊', '♋', '♌', '♍',
+    '🔥', '⭐', '🌟', '✨', '⚡', '💥', '💫', '💦', '💨', '🌈',
+    '☀️', '🌤️', '⛅', '🌥️', '☁️', '🌦️', '🌧️', '⛈️', '🌩️', '🌨️'
+  ];
 
   sendMessage(): void {
     const trimmed = this.messageText.trim();
@@ -28,6 +50,24 @@ export class MessageInputComponent {
       event.preventDefault();
       this.sendMessage();
     }
+  }
+
+  onEmojiClick(): void {
+    this.showEmojiPicker = !this.showEmojiPicker;
+  }
+
+  selectEmoji(emoji: string): void {
+    this.messageText += emoji;
+    this.showEmojiPicker = false;
+  }
+
+  onAttachmentClick(): void {
+    // Placeholder for file attachment functionality
+    alert('📎 File attachment feature coming soon!\n\nThis would allow you to:\n• Upload images\n• Attach documents\n• Share files');
+  }
+
+  closeEmojiPicker(): void {
+    this.showEmojiPicker = false;
   }
 }
 

@@ -1,5 +1,56 @@
 <div class="input-container">
+  <!-- Emoji Picker Overlay -->
+  <div class="emoji-picker-overlay" *ngIf="showEmojiPicker" (click)="closeEmojiPicker()"></div>
+  
+  <!-- Emoji Picker -->
+  <div class="emoji-picker-wrapper" *ngIf="showEmojiPicker">
+    <div class="emoji-picker">
+      <div class="emoji-picker-header">
+        <span class="emoji-picker-title">Pick an emoji</span>
+        <button class="emoji-close-btn" (click)="closeEmojiPicker()">✕</button>
+      </div>
+      <div class="emoji-grid">
+        <button
+          *ngFor="let emoji of emojis"
+          class="emoji-item"
+          (click)="selectEmoji(emoji)"
+          type="button"
+        >
+          {{ emoji }}
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="input-wrapper">
+    <!-- Attachment Button -->
+    <button
+      type="button"
+      class="attachment-button"
+      (click)="onAttachmentClick()"
+      aria-label="Attach file"
+      title="Attach file"
+    >
+      <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
+      </svg>
+    </button>
+
+    <!-- Emoji Button -->
+    <button
+      type="button"
+      class="emoji-button"
+      [class.active]="showEmojiPicker"
+      (click)="onEmojiClick()"
+      aria-label="Add emoji"
+      title="Add emoji"
+    >
+      <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+    </button>
+
+    <!-- Text Input -->
     <input
       type="text"
       [(ngModel)]="messageText"
@@ -8,6 +59,8 @@
       class="message-input"
       aria-label="Message input"
     />
+
+    <!-- Send Button -->
     <button
       (click)="sendMessage()"
       [disabled]="!messageText.trim()"
